@@ -15,7 +15,7 @@ import (
 var (
 	debugFlag  = flag.Bool("debug", false, "debug mode")
 	dryFlag    = flag.Bool("dry", false, "dry run")
-	targetFlag = flag.String("target", "", "target file")
+	targetFlag = flag.String("target", "", "target file pattern, e.g. /path/to/*.mp3")
 
 	artistFlag = flag.String("artist", "", "artist name")
 	albumFlag  = flag.String("album", "", "album name")
