@@ -85,6 +85,9 @@ func processFile(target string) error {
 		"album", tag.Album(),
 	)
 
+	tag.SetVersion(4)
+	tag.SetDefaultEncoding(id3v2.EncodingUTF8)
+
 	if isFlagSet("artist") {
 		slog.Debug("Set artist")
 		tag.SetArtist(*artistFlag)
@@ -97,6 +100,7 @@ func processFile(target string) error {
 	slog.Info("Updated tag",
 		"artist", tag.Artist(),
 		"album", tag.Album(),
+		"id3v2-version", tag.Version(),
 	)
 
 	if *dryFlag {
