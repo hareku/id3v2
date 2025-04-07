@@ -39,7 +39,7 @@ func main() {
 		slog.Error("Error", "error", err)
 		os.Exit(1)
 	}
-	slog.Info("Done")
+	slog.Debug("Done")
 }
 
 func run(ctx context.Context) error {
@@ -52,7 +52,7 @@ func run(ctx context.Context) error {
 		return fmt.Errorf("target is required")
 	}
 
-	slog.Info("Input", "target", *targetFlag)
+	slog.Debug("Input", "target", *targetFlag)
 	files, err := filepath.Glob(*targetFlag)
 	if err != nil {
 		return fmt.Errorf("list files: %w", err)
@@ -75,12 +75,12 @@ func processFile(target string) error {
 		return fmt.Errorf("open file tag: %w", err)
 	}
 
-	slog.Info("Opened",
+	slog.Debug("Opened",
 		"file", target,
 		"id3v2-version", tag.Version(),
 	)
 
-	slog.Info("Current tag",
+	slog.Debug("Current tag",
 		"artist", tag.Artist(),
 		"album", tag.Album(),
 	)
@@ -97,7 +97,7 @@ func processFile(target string) error {
 		tag.SetAlbum(*albumFlag)
 	}
 
-	slog.Info("Updated tag",
+	slog.Debug("Updated tag",
 		"artist", tag.Artist(),
 		"album", tag.Album(),
 		"id3v2-version", tag.Version(),
